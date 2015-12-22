@@ -1,6 +1,6 @@
 {
   "name": "angular-wizard-bygiro",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "authors": [
     "ByGiro <girotomaselli@gmail.com>"
   ],
@@ -25,7 +25,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": ">=1.2.x"
+    "angular": ">=1.2.x",
+	"jquery-wizard-ByGiro": "*"
   },
   "devDependencies": {
     "chai": "~1.9.1",
