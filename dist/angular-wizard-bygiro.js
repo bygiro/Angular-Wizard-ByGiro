@@ -1,4 +1,4 @@
-/*! angular-wizard-bygiro - v0.0.2 - 18 april 2015
+/*! angular-wizard-bygiro - v0.0.3 - 18 april 2015
 * Copyright (c) G. Tomaselli <girotomaselli@gmail.com> 2015; Licensed  
 */
 
@@ -18,11 +18,18 @@ angular.module('ByGiro.wizard',[])
 			scope.steps = options.steps;
 		}
 		
+		scope.currentStep = 1;
+		
 		$timeout(function () {
 			// This code will run after
 			// templateUrl has been loaded, cloned
 			// and transformed by directives.
-			bg(element).wizardByGiro(options);
+			bg(element)
+				.wizardByGiro(options)
+				.on('step_changed.wizardByGiro',function(){
+					var pluginData = bg(element).data('plugin_wizardByGiro');
+					scope.currentStep = pluginData.currentStep;
+			});
 		}, 0);		
 	}
 
@@ -44,8 +51,15 @@ angular.module('ByGiro.wizard',[])
 				options = scope[attributes.bgwOptions];
 			}
 
+			scope.currentStep = 1;
+			
 			$timeout(function () {
-				bg(element).wizardByGiro(options);
+				bg(element)
+					.wizardByGiro(options)
+					.on('step_changed.wizardByGiro',function(){
+						var pluginData = bg(element).data('plugin_wizardByGiro');
+						scope.currentStep = pluginData.currentStep;
+				});
 			}, 0, false);
         }
     };
